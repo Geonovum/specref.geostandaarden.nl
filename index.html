@@ -12,6 +12,22 @@
     respecConfig.localBiblio = Object.assign(organisationConfig.localBiblio,respecConfig.localBiblio);
     respecConfig = {...organisationConfig, ...respecConfig};
   </script>
+  <script>
+  window.addEventListener('load', () => {
+    const biblio = window.organisationConfig.localBiblio; // Direct toegang tot de globale configuratie
+    const section = document.getElementById('x1-3-inhoud-van-de-lijst');
+    const div = document.createElement('div');
+    div.id = 'referentielijst';
+    section.appendChild(div);
+
+    Object.keys(biblio).sort().forEach(key => {
+      const tag = document.createElement('p');
+      tag.textContent = '[[' + key + ']]';
+	  console.log(tag.textContent);
+      div.appendChild(tag);
+    });
+  });
+</script>
   <script>document.title = respecConfig.title</script>
   <title>TODO: Vul hier de titel in</title>
   <link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico" />
@@ -42,22 +58,7 @@
   <section id='conformance'></section> <!-- Gegeneerd hoofdstuk over conformiteit-->
   <section id='tof'></section><!-- Lijst van figuren -->
   <section id="index"></section><!-- Lijst van begrippen -->
-  <script>
-  window.addEventListener('load', () => {
-    const biblio = window.organisationConfig.localBiblio; // Direct toegang tot de globale configuratie
-    const section = document.getElementById('x1-3-inhoud-van-de-lijst');
-    const div = document.createElement('div');
-    div.id = 'referentielijst';
-    section.appendChild(div);
-
-    Object.keys(biblio).sort().forEach(key => {
-      const tag = document.createElement('p');
-      tag.textContent = '[[' + key + ']]';
-	  console.log(tag.textContent);
-      div.appendChild(tag);
-    });
-  });
-</script>
+  
 </body>
 
 </html>
