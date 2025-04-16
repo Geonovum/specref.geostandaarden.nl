@@ -14,20 +14,45 @@
   </script>
   <script>
   window.addEventListener('load', () => {
-    const biblio = window.organisationConfig.localBiblio; // Direct toegang tot de globale configuratie
-    const section = document.getElementById('x1-3-inhoud-van-de-lijst');
-    const div = document.createElement('div');
-    div.id = 'referentielijst';
-    section.appendChild(div);
+    const biblio = window.organisationConfig.localBiblio; // Toegang tot de globale configuratie
+    const section = document.getElementById('informatieve-referenties');
 
-    Object.keys(biblio).sort().forEach(key => {
-      const tag = document.createElement('p');
-      tag.textContent = '[[' + key + ']]';
-	  console.log(tag.textContent);
-      div.appendChild(tag);
+    // Maak de section eerst leeg
+    section.innerHTML = '';
+
+    Object.keys(biblio).forEach(key => {
+      const entry = biblio[key];
+
+      // Maak een nieuwe <dl> voor elke referentie
+      const dl = document.createElement('dl');
+      dl.classList.add('bibliography');
+
+      const dt = document.createElement('dt');
+      const dd = document.createElement('dd');
+
+      // Vul de referentie-informatie in
+      dt.textContent = `[${key}]`;
+      dd.innerHTML = `
+        <a href="${entry.href}" title="${entry.title}">
+          <cite>${entry.title}</cite>
+        </a>. ${entry.publisher}. ${entry.date}. ${entry.status}. URL: <a href="${entry.href}">${entry.href}</a>
+      `;
+
+      // Voeg auteurs toe indien beschikbaar
+      if (entry.editors && entry.editors.length > 0) {
+        const authors = entry.editors.join('; ');
+        dd.innerHTML += ` <em>Authors:</em> ${authors}`;
+      }
+
+      dl.appendChild(dt);
+      dl.appendChild(dd);
+
+      // Voeg de nieuwe <dl> toe aan de section
+      section.appendChild(dl);
     });
   });
 </script>
+
   <script>document.title = respecConfig.title</script>
   <title>TODO: Vul hier de titel in</title>
   <link rel="shortcut icon" type="image/x-icon" href="https://tools.geostandaarden.nl/respec/style/logos/Geonovum.ico" />
