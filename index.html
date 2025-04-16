@@ -45,52 +45,45 @@
   <section id="index"></section><!-- Lijst van begrippen -->
 <script>
   window.addEventListener('load', () => {
+    const biblio = window.organisationConfig.localBiblio; // Toegang tot de globale configuratie
     const section = document.getElementById('informatieve-referenties');
-    const loadingMessage = document.getElementById('loading-message');
 
-    // Toon "Laden..." bericht
-    loadingMessage.style.display = 'block';
+    // Maak de section eerst leeg
+    section.innerHTML = '';
 
-    // Wacht 10 seconden voordat de referenties worden toegevoegd
-    setTimeout(() => {
-      const biblio = window.organisationConfig.localBiblio; // Toegang tot de globale configuratie
+    Object.keys(biblio).forEach(key => {
+      const entry = biblio[key];
 
-      // Maak de section eerst leeg
-      section.innerHTML = '';
+      // Maak een nieuwe <dl> voor elke referentie
+      const dl = document.createElement('dl');
+      dl.classList.add('bibliography');
 
-      Object.keys(biblio).forEach(key => {
-        const entry = biblio[key];
+      const dt = document.createElement('dt');
+      const dd = document.createElement('dd');
 
-        // Maak een nieuwe <dl> voor elke referentie
-        const dl = document.createElement('dl');
-        dl.classList.add('bibliography');
+      // Vul de referentie-informatie in
+      dt.textContent = `[${key}]`;
+      dd.innerHTML = `
+        <a href="${entry.href}" title="${entry.title}">
+          <cite>${entry.title}</cite>
+        </a>. ${entry.publisher}. ${entry.date}. ${entry.status}. URL: <a href="${entry.href}">${entry.href}</a>
+      `;
 
-        const dt = document.createElement('dt');
-        const dd = document.createElement('dd');
+      // Voeg auteurs toe indien beschikbaar
+      if (entry.editors && entry.editors.length > 0) {
+        const authors = entry.editors.join('; ');
+        dd.innerHTML += ` <em>Authors:</em> ${authors}`;
+      }
 
-        // Vul de referentie-informatie in
-        dt.textContent = `[${key}]`;
-        dd.innerHTML = `
-          <a href="${entry.href}" title="${entry.title}">
-            <cite>${entry.title}</cite>
-          </a>. ${entry.publisher}. ${entry.date}. ${entry.status}. URL: <a href="${entry.href}">${entry.href}</a>
-        `;
+      dl.appendChild(dt);
+      dl.appendChild(dd);
 
-        // Voeg auteurs toe indien beschikbaar en entry.editors is een array
-        if (Array.isArray(entry.editors) && entry.editors.length > 0) {
-          const authors = entry.editors.join('; ');
-          dd.innerHTML += ` <em>Authors:</em> ${authors}`;
-        }
-
-        dl.appendChild(dt);
-        dl.appendChild(dd);
-
-        // Voeg de nieuwe <dl> toe aan de section
-        section.appendChild(dl);
-      });
-     
+      // Voeg de nieuwe <dl> toe aan de section
+      section.appendChild(dl);
+    });
   });
 </script>
+
 
 </body>
 
