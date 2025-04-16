@@ -40,13 +40,22 @@
   <!-- <div id="catalogus" data-include="data/TODO-cat.respec.html" data-include-replace=true></div> -->
 
   <!-- De volgende paragrafen worden automatisch gevuld. Je kunt ze uitzetten -->
-  <!--section id='conformance'></section--> <!-- Gegeneerd hoofdstuk over conformiteit-->
-  <!--section id='tof'></section--><!-- Lijst van figuren -->
-  <!--section id="index"></section--><!-- Lijst van begrippen -->
+  <!--section id='conformance'></section> <!-- Gegeneerd hoofdstuk over conformiteit-->
+  <!--section id='tof'></section><!-- Lijst van figuren -->
+  <!--section id="index"></section><!-- Lijst van begrippen -->
   
   
 <script>
   window.addEventListener('load', () => {
+    // Verwijder de <ol> rondom de referentie-inhoud
+    const tocLine = document.querySelector('li.tocline a[href="#informatieve-referenties"]');
+    if (tocLine) {
+      const ol = tocLine.closest('ol');
+      if (ol) {
+        ol.remove();
+      }
+    }
+
     const biblio = window.organisationConfig.localBiblio; // Toegang tot de globale configuratie
     const section = document.getElementById('informatieve-referenties');
 
@@ -83,23 +92,9 @@
       // Voeg de nieuwe <dl> toe aan de section
       section.appendChild(dl);
     });
-	
-	 // Zoek de <li> met de class 'tocline' die de verwijzing naar "informatieve referenties" bevat
-    const tocLine = document.querySelector('li.tocline a[href="#informatieve-referenties"]');
-    
-    // Als de TOC-lijn bestaat, verwijder de <ol> binnen deze lijn
-    if (tocLine) {
-      const ol = tocLine.closest('ol');
-      if (ol) {
-        ol.remove();
-      }
-    }
- 
-	
   });
-  
-  
 </script>
+
 
 
 
