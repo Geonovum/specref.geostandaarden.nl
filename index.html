@@ -53,6 +53,7 @@
     Object.keys(biblio).sort().forEach(key => {
       const li = document.createElement('li');
       li.textContent = '[[' + key + ']]';
+	  console.log(li.textContent);
       ul.appendChild(li);
     });
   });
