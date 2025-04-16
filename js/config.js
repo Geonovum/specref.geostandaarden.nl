@@ -2,7 +2,8 @@ let respecConfig = {
   useLogo: true,
   useLabel: true,
   // title is verplicht! Neem hier de titel van het document op ----------------------
-  title: "[TODO: Neem titel op in config.js]",
+  title: "Bibliografische referenties in Respec",
+  subtitle: "Gebruik van bibliografische referenties via geonovum-config.js en specref.geostandaarden.nl in ReSpec",
   //-- specStatus is verplicht! (activeer 1 van de volgende) --------------------------
   specStatus: "wv",                   // Werkversie
   //specStatus: "cv",               // Consultatieversie
