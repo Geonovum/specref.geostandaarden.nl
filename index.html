@@ -65,14 +65,14 @@
 
       // Vul de referentie-informatie in
       dt.textContent = `[${key}]`;
-      dd.innerHTML = `
+      dd.innerHTML = ` 
         <a href="${entry.href}" title="${entry.title}">
           <cite>${entry.title}</cite>
         </a>. ${entry.publisher}. ${entry.date}. ${entry.status}. URL: <a href="${entry.href}">${entry.href}</a>
       `;
 
       // Voeg auteurs toe indien beschikbaar
-      if (entry.editors && entry.editors.length > 0) {
+      if (Array.isArray(entry.editors) && entry.editors.length > 0) {
         const authors = entry.editors.join('; ');
         dd.innerHTML += ` <em>Authors:</em> ${authors}`;
       }
@@ -85,6 +85,7 @@
     });
   });
 </script>
+
 
 
 </body>
