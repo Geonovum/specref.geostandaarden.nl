@@ -30,8 +30,8 @@
 
   <!-- TODO: voeg hier je eigen hoofdstukken toe -->
   <section data-include-format="markdown" data-include="ch01.md" class="informative"></section>
-  <section data-include-format="markdown" data-include="ch02.md"></section>
-  <section data-include-format="markdown" data-include="ch03.md"></section>
+  <section data-include-format="markdown" data-include="ch02.md" class="informative"></section>
+  <section data-include-format="markdown" data-include="ch03.md" class="informative"></section>
   <!--section data-include-format="markdown" data-include="mermaid.md"></section-->
 
   <!-- Als je document een door imvertor gegenereerde catalogus bevat kan je die -->
@@ -52,7 +52,7 @@
 
     Object.keys(biblio).sort().forEach(key => {
       const li = document.createElement('li');
-      li.textContent = '[[' . key . ']]';
+      li.textContent = '[[' + key + ']]';
       ul.appendChild(li);
     });
   });
