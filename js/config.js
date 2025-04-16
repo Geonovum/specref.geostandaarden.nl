@@ -48,7 +48,7 @@ let respecConfig = {
   editors:
     [
       {
-        name: "voornaam achternaam",
+        name: "Arnoud de Boer",
         company: "Geonovum",
         companyURL: "https://www.geonovum.nl",
       }
@@ -58,14 +58,14 @@ let respecConfig = {
   authors:
     [
       {
-        name: "voornaam achternaam",
+        name: "Arnoud de Boer",
         company: "Geonovum",
         companyURL: "https://www.geonovum.nl",
       }
     ],
   // TODO: Vul de github URL in.
   //neem hier de URL van de github repository op waar het respec document in staat
-  github: "https://github.com/Geonovum/NL-ReSpec-GN-template",
+  github: "https://github.com/Geonovum/specref.geostandaarden.nl",
   // Create PDF and link to file in header (optional):
   // TODO: Change the filename as preferred.
   alternateFormats: [
