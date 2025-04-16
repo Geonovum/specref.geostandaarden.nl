@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <script src="https://cdn.jsdelivr.net/gh/digitalbazaar/respec-mermaid@1.0.1/dist/main.js" class="remove"></script>
   <script src="https://tools.geostandaarden.nl/respec/config/geonovum-config.js" class="remove"></script>
+  
   <script src="js/config.js" class="remove"></script>
   <script class="remove">
     respecConfig.localBiblio = Object.assign(organisationConfig.localBiblio,respecConfig.localBiblio);
@@ -18,7 +19,8 @@
   <!-- De volgende regel zorgt ervoor dat plaatjes uit Imvertor niet geschaald
        worden, zodat de imagemap die op deze plaatjes zit werkt. -->
   <style>
-  img {max-width: 90%;}  
+  img {max-width: 90%;}
+  
   </style>
 </head>
 
@@ -40,6 +42,21 @@
   <section id='conformance'></section> <!-- Gegeneerd hoofdstuk over conformiteit-->
   <section id='tof'></section><!-- Lijst van figuren -->
   <section id="index"></section><!-- Lijst van begrippen -->
+  <script>
+  window.addEventListener('load', () => {
+    const biblio = window.organisationConfig.localBiblio; // Direct toegang tot de globale configuratie
+    const section = document.getElementById('inhoud-van-de-lijst');
+    const ul = document.createElement('ul');
+    ul.id = 'referentielijst';
+    section.appendChild(ul);
+
+    Object.keys(biblio).sort().forEach(key => {
+      const li = document.createElement('li');
+      li.textContent = key;
+      ul.appendChild(li);
+    });
+  });
+</script>
 </body>
 
 </html>
