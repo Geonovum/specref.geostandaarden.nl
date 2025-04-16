@@ -52,7 +52,7 @@
 
     Object.keys(biblio).sort().forEach(key => {
       const li = document.createElement('li');
-      li.textContent = key;
+      li.textContent = '[[' . key . ']]';
       ul.appendChild(li);
     });
   });
