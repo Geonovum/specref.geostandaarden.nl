@@ -83,7 +83,22 @@
       // Voeg de nieuwe <dl> toe aan de section
       section.appendChild(dl);
     });
+	
+	 // Zoek de <li> met de class 'tocline' die de verwijzing naar "informatieve referenties" bevat
+    const tocLine = document.querySelector('li.tocline a[href="#informatieve-referenties"]');
+    
+    // Als de TOC-lijn bestaat, verwijder de <ol> binnen deze lijn
+    if (tocLine) {
+      const ol = tocLine.closest('ol');
+      if (ol) {
+        ol.remove();
+      }
+    }
   });
+	
+  });
+  
+  
 </script>
 
 
