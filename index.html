@@ -43,7 +43,7 @@
   <section id='conformance'></section> <!-- Gegeneerd hoofdstuk over conformiteit-->
   <section id='tof'></section><!-- Lijst van figuren -->
   <section id="index"></section><!-- Lijst van begrippen -->
-  <script>
+<script>
   window.addEventListener('load', () => {
     const section = document.getElementById('informatieve-referenties');
     const loadingMessage = document.getElementById('loading-message');
@@ -76,8 +76,8 @@
           </a>. ${entry.publisher}. ${entry.date}. ${entry.status}. URL: <a href="${entry.href}">${entry.href}</a>
         `;
 
-        // Voeg auteurs toe indien beschikbaar
-        if (entry.editors && entry.editors.length > 0) {
+        // Voeg auteurs toe indien beschikbaar en entry.editors is een array
+        if (Array.isArray(entry.editors) && entry.editors.length > 0) {
           const authors = entry.editors.join('; ');
           dd.innerHTML += ` <em>Authors:</em> ${authors}`;
         }
